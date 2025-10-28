@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import riberioLogo from "@/assets/ribeiro-logo.png";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,11 +17,8 @@ const Header = () => {
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background border-b border-border shadow-sm">
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-            <span className="text-primary-foreground font-bold text-lg">R</span>
-          </div>
-          <span className="text-xl font-bold text-primary">RIBEIRO</span>
+        <div className="flex items-center">
+          <img src={riberioLogo} alt="Ribeiro Consultoria" className="h-12 w-auto" />
         </div>
 
         {/* Desktop Menu */}
