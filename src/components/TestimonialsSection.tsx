@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Quote } from "lucide-react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const TestimonialsSection = () => {
@@ -35,47 +35,47 @@ const TestimonialsSection = () => {
   };
 
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-primary mb-4">
-            Clientes Contemplados
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+            Simule agora gratuitamente e descubra o melhor plano para conquistar o seu sonho
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Mais de 1000 famílias já realizaram o sonho da casa própria e do carro novo.
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            As condições podem mudar a qualquer momento
           </p>
+          <Button 
+            onClick={() => {
+              const element = document.getElementById("simulador");
+              if (element) element.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-base px-8 py-6 rounded-lg shadow-lg"
+          >
+            Quero meu plano ideal →
+          </Button>
         </div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="bg-card rounded-2xl shadow-xl p-8 md:p-12 relative">
-            <Quote className="absolute top-8 left-8 w-12 h-12 text-primary/20" />
-            
-            <div className="grid md:grid-cols-[300px,1fr] gap-8 items-center">
-              <div className="mx-auto">
-                <img
-                  src={testimonials[currentIndex].image}
-                  alt={testimonials[currentIndex].name}
-                  className="w-64 h-64 object-cover rounded-xl shadow-lg"
-                />
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-2xl font-bold text-primary mb-1">
-                    Cliente Contemplado
-                  </h3>
-                  <p className="text-lg font-semibold text-foreground">
-                    {testimonials[currentIndex].type}
-                  </p>
-                </div>
-
-                <p className="text-muted-foreground leading-relaxed text-lg italic">
-                  "{testimonials[currentIndex].text}"
-                </p>
-
-                <p className="text-primary font-semibold pt-4">
-                  — {testimonials[currentIndex].name}
-                </p>
+        <div className="max-w-6xl mx-auto mt-16">
+          <div className="relative">
+            <div className="overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-out"
+                style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div 
+                    key={index} 
+                    className="w-full flex-shrink-0 px-2"
+                  >
+                    <div className="bg-white rounded-2xl shadow-lg overflow-hidden h-[500px]">
+                      <img
+                        src={testimonial.image}
+                        alt={testimonial.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -84,7 +84,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={handlePrev}
-                className="rounded-full"
+                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <ChevronLeft className="w-5 h-5" />
               </Button>
@@ -95,7 +95,7 @@ const TestimonialsSection = () => {
                     key={index}
                     onClick={() => setCurrentIndex(index)}
                     className={`h-2 rounded-full transition-all ${
-                      index === currentIndex ? "w-8 bg-primary" : "w-2 bg-border"
+                      index === currentIndex ? "w-8 bg-primary" : "w-2 bg-gray-300"
                     }`}
                   />
                 ))}
@@ -105,7 +105,7 @@ const TestimonialsSection = () => {
                 variant="outline"
                 size="icon"
                 onClick={handleNext}
-                className="rounded-full"
+                className="rounded-full w-12 h-12 border-2 border-primary hover:bg-primary hover:text-primary-foreground"
               >
                 <ChevronRight className="w-5 h-5" />
               </Button>

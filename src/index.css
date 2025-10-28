@@ -9,39 +9,39 @@ All colors MUST be HSL.
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 15%;
+    --foreground: 217 33% 17%;
 
     --card: 0 0% 100%;
-    --card-foreground: 0 0% 15%;
+    --card-foreground: 217 33% 17%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 15%;
+    --popover-foreground: 217 33% 17%;
 
-    --primary: 22 65% 50%;
+    --primary: 219 89% 41%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 22 65% 45%;
+    --primary-hover: 219 89% 35%;
 
-    --secondary: 0 0% 96%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 217 33% 17%;
 
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 45%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --accent: 22 65% 50%;
+    --accent: 219 89% 41%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 90%;
-    --input: 0 0% 90%;
-    --ring: 22 65% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 219 89% 41%;
 
     --radius: 0.75rem;
     
-    --gradient-primary: linear-gradient(135deg, hsl(22 65% 50%), hsl(22 65% 45%));
-    --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.08);
-    --shadow-hover: 0 4px 16px rgba(212, 107, 43, 0.15);
+    --gradient-primary: linear-gradient(135deg, hsl(219 89% 41%), hsl(219 89% 35%));
+    --shadow-card: 0 2px 12px rgba(12, 76, 199, 0.08);
+    --shadow-hover: 0 4px 20px rgba(12, 76, 199, 0.15);
 
     --sidebar-background: 0 0% 98%;
 
@@ -61,34 +61,34 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 0 0% 10%;
+    --background: 217 33% 10%;
     --foreground: 0 0% 95%;
 
-    --card: 0 0% 12%;
+    --card: 217 33% 12%;
     --card-foreground: 0 0% 95%;
 
-    --popover: 0 0% 12%;
+    --popover: 217 33% 12%;
     --popover-foreground: 0 0% 95%;
 
-    --primary: 22 65% 50%;
+    --primary: 219 89% 41%;
     --primary-foreground: 0 0% 100%;
-    --primary-hover: 22 65% 55%;
+    --primary-hover: 219 89% 45%;
 
-    --secondary: 0 0% 20%;
+    --secondary: 217 33% 20%;
     --secondary-foreground: 0 0% 95%;
 
-    --muted: 0 0% 20%;
+    --muted: 217 33% 20%;
     --muted-foreground: 0 0% 60%;
 
-    --accent: 22 65% 50%;
+    --accent: 219 89% 41%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 62.8% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 25%;
-    --input: 0 0% 25%;
-    --ring: 22 65% 50%;
+    --border: 217 33% 25%;
+    --input: 217 33% 25%;
+    --ring: 219 89% 41%;
     --sidebar-background: 0 0% 10%;
     --sidebar-foreground: 0 0% 95%;
     --sidebar-primary: 22 65% 50%;

@@ -274,37 +274,36 @@ const Simulator = () => {
   };
 
   return (
-    <section id="simulador" className="py-16 bg-background">
+    <section id="simulador" className="py-20 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-primary mb-3">
-              Simulador de Crédito
-            </h2>
-            <p className="text-muted-foreground">
-              Preencha os dados abaixo para receber sua simulação
+            <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
+              SIMULE AGORA
             </p>
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3">
+              Responda as perguntas para fazer sua simulação
+            </h2>
           </div>
 
-          <div className="bg-card rounded-2xl shadow-lg p-6 md:p-8 space-y-6">
-            <div className="space-y-2">
-              <div className="flex justify-between text-sm text-muted-foreground">
-                <span>Progresso</span>
-                <span>{currentStep + 1} de {totalSteps}</span>
+          <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-10 space-y-8">
+            <div className="space-y-3">
+              <div className="flex justify-between text-sm font-medium text-foreground mb-1">
+                <span>{Math.round(progress)}%</span>
               </div>
-              <Progress value={progress} className="h-2" />
+              <Progress value={progress} className="h-3" />
             </div>
 
             <div className="min-h-[220px]">
               {renderStep()}
             </div>
 
-            <div className="flex justify-between gap-4 pt-4">
+            <div className="flex justify-between gap-4 pt-6">
               <Button
                 variant="outline"
                 onClick={handleBack}
                 disabled={currentStep === 0}
-                className="flex items-center gap-2"
+                className="flex items-center gap-2 px-6 py-6 text-base"
               >
                 <ChevronLeft className="w-4 h-4" />
                 Voltar
@@ -314,7 +313,7 @@ const Simulator = () => {
                 <Button
                   onClick={handleNext}
                   disabled={!canProceed()}
-                  className="flex items-center gap-2 bg-primary hover:bg-primary-hover"
+                  className="flex items-center gap-2 bg-primary hover:bg-primary-hover px-8 py-6 text-base font-semibold"
                 >
                   Próximo
                   <ChevronRight className="w-4 h-4" />
@@ -323,7 +322,7 @@ const Simulator = () => {
                 <Button
                   onClick={handleFinish}
                   disabled={!canProceed()}
-                  className="bg-primary hover:bg-primary-hover"
+                  className="bg-primary hover:bg-primary-hover px-8 py-6 text-base font-semibold"
                 >
                   Finalizar Simulação
                 </Button>
