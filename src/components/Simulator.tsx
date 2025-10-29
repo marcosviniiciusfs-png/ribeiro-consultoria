@@ -6,6 +6,13 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import InputMask from "react-input-mask";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 interface SimulatorData {
   propertyType: string;
@@ -146,27 +153,22 @@ const Simulator = () => {
             <Label className="text-lg font-semibold text-primary text-center block mb-6">
               Qual tipo de bem você deseja adquirir?
             </Label>
-            <div className="flex flex-col gap-3 max-w-md mx-auto">
-              <button
-                onClick={() => setFormData({ ...formData, propertyType: "Imóvel" })}
-                className={`p-4 rounded-xl border-2 transition-all ${
-                  formData.propertyType === "Imóvel"
-                    ? "border-primary bg-primary/5 text-primary"
-                    : "border-border hover:border-primary/50 text-muted-foreground"
-                }`}
+            <div className="max-w-md mx-auto">
+              <Select
+                value={formData.propertyType}
+                onValueChange={(value) => setFormData({ ...formData, propertyType: value })}
               >
-                <span className="text-base font-normal">Imóvel</span>
-              </button>
-              <button
-                onClick={() => setFormData({ ...formData, propertyType: "Veículo" })}
-                className={`p-4 rounded-xl border-2 transition-all ${
-                  formData.propertyType === "Veículo"
-                    ? "border-primary bg-primary/5 text-primary"
-                    : "border-border hover:border-primary/50 text-muted-foreground"
-                }`}
-              >
-                <span className="text-base font-normal">Veículo</span>
-              </button>
+                <SelectTrigger className="w-full text-lg p-6">
+                  <SelectValue placeholder="Selecione o tipo de bem" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="Imóvel">Imóvel</SelectItem>
+                  <SelectItem value="Veículo">Veículo</SelectItem>
+                  <SelectItem value="Moto">Moto</SelectItem>
+                  <SelectItem value="Caminhão">Caminhão</SelectItem>
+                  <SelectItem value="Maquinário">Maquinário</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         );
