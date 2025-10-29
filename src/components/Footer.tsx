@@ -1,4 +1,5 @@
 import { Phone, Instagram } from "lucide-react";
+import riberioLogo from "@/assets/ribeiro-logo.png";
 
 const Footer = () => {
   return (
@@ -7,11 +8,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-3 gap-12 mb-8">
           {/* Logo */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center">
-                <span className="text-[#003366] font-bold text-xl">R</span>
-              </div>
-              <span className="text-2xl font-bold">RIBEIRO</span>
+            <div className="mb-6">
+              <img src={riberioLogo} alt="Ribeiro Consultoria" className="h-12 w-auto" />
             </div>
           </div>
 
