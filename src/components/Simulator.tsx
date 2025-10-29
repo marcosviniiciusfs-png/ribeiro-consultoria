@@ -83,17 +83,23 @@ const Simulator = () => {
 
   const handleFinish = async () => {
     try {
+      // Formatar data no formato DD-MM-YYYY
+      const now = new Date();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0');
+      const year = now.getFullYear();
+      const dataEntrada = `${day}-${month}-${year}`;
+      
       // Preparar dados para envio
-      const dataEntrada = new Date().toISOString();
       const webhookData = {
-        data_entrada: dataEntrada,
-        campo_01: formData.fullName,
-        campo_02: formData.whatsapp,
-        campo_03: formData.propertyType,
-        campo_04: formData.creditAmount,
-        campo_05: formData.hasDownPayment === "Sim" ? formData.downPaymentAmount : "Não",
-        campo_06: formData.monthlyPayment,
-        campo_07: formData.city
+        "Data de Entrada": dataEntrada,
+        "Nome Completo": formData.fullName,
+        "WhatsApp": formData.whatsapp,
+        "Tipo de Bem": formData.propertyType,
+        "Valor Pretendido (R$)": formData.creditAmount,
+        "Valor de Entrada (R$)": formData.hasDownPayment === "Sim" ? formData.downPaymentAmount : "Não",
+        "Parcela Ideal (R$)": formData.monthlyPayment,
+        "Cidade": formData.city
       };
 
       // Enviar para o webhook
