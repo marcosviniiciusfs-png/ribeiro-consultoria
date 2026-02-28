@@ -1,45 +1,68 @@
-import { MessageCircle, DollarSign, FileText } from "lucide-react";
+import { Award, MapPin, Trophy, Building } from "lucide-react";
+import addressPhoto from "@/assets/address-photo.png";
 
 const BenefitsSection = () => {
-  const benefits = [
+  const highlights = [
     {
-      icon: MessageCircle,
-      title: "Receba direto no WhatsApp",
-      description: "Sua simulação de crédito é enviada rapidamente para o seu WhatsApp com todas as informações necessárias."
+      icon: Building,
+      title: "Mais de 9 anos no mercado",
+      description: "Empresa de consultoria financeira consolidada em Parauapebas."
     },
     {
-      icon: DollarSign,
-      title: "Parcelas que cabem no seu bolso",
-      description: "Encontramos as melhores condições de financiamento com parcelas que se adequam ao seu orçamento."
+      icon: MapPin,
+      title: "Duas representações",
+      description: "Presente em Parauapebas e Canaã dos Carajás."
     },
     {
-      icon: FileText,
-      title: "Simulação sem compromisso",
-      description: "Faça quantas simulações quiser, totalmente grátis e sem consulta ao SPC ou Serasa."
+      icon: Trophy,
+      title: "Campeã em vendas estadual",
+      description: "Reconhecida como a líder de vendas no estado."
+    },
+    {
+      icon: Award,
+      title: "Top 10 nacional",
+      description: "Entre as 10 melhores da administradora a nível nacional."
     }
   ];
 
   return (
-    <section id="beneficios" className="py-20 bg-white">
+    <section id="sobre" className="py-20 bg-white">
       <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          {benefits.map((benefit, index) => (
+        <div className="text-center mb-12">
+          <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
+            SOBRE NÓS
+          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            Ribeiro Consultoria
+          </h2>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-5xl mx-auto mb-16">
+          {highlights.map((item, index) => (
             <div
               key={index}
               className="text-center animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="w-16 h-16 rounded-full bg-blue-100 flex items-center justify-center mb-5 mx-auto">
-                <benefit.icon className="w-8 h-8 text-primary" />
+                <item.icon className="w-8 h-8 text-primary" />
               </div>
               <h3 className="text-lg font-bold text-foreground mb-2">
-                {benefit.title}
+                {item.title}
               </h3>
               <p className="text-muted-foreground text-sm leading-relaxed">
-                {benefit.description}
+                {item.description}
               </p>
             </div>
           ))}
+        </div>
+
+        <div className="max-w-2xl mx-auto">
+          <img
+            src={addressPhoto}
+            alt="Endereço Ribeiro Consultoria"
+            className="w-full h-auto rounded-2xl shadow-lg"
+          />
         </div>
       </div>
     </section>

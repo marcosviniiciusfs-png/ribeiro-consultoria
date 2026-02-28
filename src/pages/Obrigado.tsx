@@ -16,12 +16,12 @@ const Obrigado = () => {
             <CheckCircle className="w-20 h-20 text-primary" />
           </div>
           
-          <h1 className="text-3xl md:text-4xl font-bold text-foreground">
-            Obrigado!
+           <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+            Obrigado pela sua candidatura!
           </h1>
           
           <p className="text-lg text-muted-foreground">
-            Sua solicitação foi enviada com sucesso! Em breve entraremos em contato.
+            Recebemos seus dados com sucesso! Nossa equipe entrará em contato em breve.
           </p>
           
           <Button 
