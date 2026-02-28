@@ -91,10 +91,12 @@ const Simulator = () => {
     <>
       {/* Marquee bar */}
       <div className="w-full bg-primary overflow-hidden py-3">
-        <div className="flex whitespace-nowrap" style={{ animation: "marquee-scroll 15s linear infinite" }}>
-          {Array.from({ length: 16 }).map((_, i) => (
-            <img key={i} src={marqueeLogo} alt="" className="h-8 mx-6 inline-block flex-shrink-0" />
-          ))}
+        <div className="flex w-max marquee-track">
+          {[0, 1].map((set) =>
+            Array.from({ length: 10 }).map((_, i) => (
+              <img key={`${set}-${i}`} src={marqueeLogo} alt="" className="h-8 mx-6 flex-shrink-0" />
+            ))
+          )}
         </div>
       </div>
 
