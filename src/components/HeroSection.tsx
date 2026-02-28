@@ -10,8 +10,8 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
     <section id="inicio" className="pt-24 pb-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-6 animate-fade-in flex flex-col items-center md:items-start">
-            <div className="text-center md:text-left">
+          <div className="space-y-6 animate-fade-in flex flex-col items-center">
+            <div className="text-center">
               <h1
                 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight whitespace-nowrap"
                 style={{ color: "#003399", lineHeight: "1.1" }}
