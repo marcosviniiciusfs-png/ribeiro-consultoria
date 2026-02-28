@@ -1,11 +1,17 @@
 
 
-## Plano: Ajustar texto do Hero em linha única
+## Plano: Centralizar texto e reformular formulário em steps
 
-### Alteração em `src/components/HeroSection.tsx`
+### 1. Centralizar "Ribeiro Consultoria" em `HeroSection.tsx`
+- Mudar o container de texto para `text-center` (remover `md:text-left`)
+- Centralizar ambos os textos horizontalmente para que "Ribeiro Consultoria" fique centralizado sob "FAÇA PARTE DO NOSSO TIME"
 
-- Reduzir o tamanho da fonte do h1 "FAÇA PARTE DO NOSSO TIME" para caber em uma única linha (de `text-4xl md:text-5xl lg:text-6xl` para algo como `text-2xl md:text-3xl lg:text-4xl`)
-- Adicionar `whitespace-nowrap` ao h1 para forçar linha única
-- Ajustar o tamanho do texto cursivo proporcionalmente para que ambos tenham largura similar
-- Aumentar a margem negativa para a sobreposição ficar como na imagem 2 de referência
+### 2. Reformular `Simulator.tsx` para formulário multi-step (2 em 2)
+- Adicionar state `step` (1, 2, 3)
+- **Step 1**: Nome completo + Idade (lado a lado em grid 2 colunas)
+- **Step 2**: Telefone + WhatsApp (lado a lado)
+- **Step 3**: Cidade + Bairro (lado a lado) + Observação (1 linha, abaixo)
+- Botões "Próximo" nos steps 1 e 2, "Enviar Candidatura" no step 3
+- Botão "Voltar" nos steps 2 e 3
+- Indicador de progresso (step 1/3, 2/3, 3/3)
 
