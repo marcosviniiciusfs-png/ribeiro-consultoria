@@ -13,13 +13,13 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
           <div className="space-y-6 animate-fade-in flex flex-col items-center md:items-start">
             <div className="text-center md:text-left">
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight"
+                className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase tracking-tight whitespace-nowrap"
                 style={{ color: "#003399", lineHeight: "1.1" }}
               >
                 Faça parte do nosso time
               </h1>
               <p
-                className="-mt-3 md:-mt-5 text-5xl md:text-6xl lg:text-7xl"
+                className="-mt-2 md:-mt-3 text-4xl md:text-5xl lg:text-6xl"
                 style={{ fontFamily: "'Great Vibes', cursive", color: "#000", lineHeight: "1.2" }}
               >
                 Ribeiro Consultoria
