@@ -1,5 +1,5 @@
 import { Phone, Instagram } from "lucide-react";
-import riberioLogo from "@/assets/ribeiro-logo.png";
+import riberioLogo from "@/assets/ribeiro-logo-footer.png";
 
 const Footer = () => {
   return (
