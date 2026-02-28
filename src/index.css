@@ -111,7 +111,7 @@ All colors MUST be HSL.
 
 @media (max-width: 768px) {
   .marquee-track {
-    animation-duration: 5.5s;
+    animation-duration: 4.5s;
   }
 }
 
