@@ -33,7 +33,7 @@ const BenefitsSection = () => {
           </h2>
         </div>
 
-        <div className="flex flex-col gap-12 max-w-5xl mx-auto">
+        <div className="flex flex-col gap-8 max-w-3xl mx-auto">
           {locations.map((loc, index) => (
             <div
               key={index}
@@ -44,7 +44,7 @@ const BenefitsSection = () => {
                 <img
                   src={loc.image}
                   alt={`Escritório ${loc.name}`}
-                  className="w-full h-full object-cover min-h-[240px]"
+                  className="w-full h-full object-cover min-h-[160px]"
                 />
               </div>
 
@@ -54,7 +54,7 @@ const BenefitsSection = () => {
                     src={loc.embedUrl}
                     width="100%"
                     height="100%"
-                    style={{ border: 0, minHeight: 240 }}
+                    style={{ border: 0, minHeight: 160 }}
                     allowFullScreen
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
