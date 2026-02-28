@@ -11,16 +11,16 @@ const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           <div className="space-y-6 animate-fade-in flex flex-col items-center md:items-start">
-            <div className="space-y-2 text-center md:text-left">
+            <div className="text-center md:text-left">
               <h1
-                className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-tight"
-                style={{ color: "#003399" }}
+                className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight"
+                style={{ color: "#003399", lineHeight: "1.1" }}
               >
                 Faça parte do nosso time
               </h1>
               <p
-                className="text-4xl md:text-5xl lg:text-6xl"
-                style={{ fontFamily: "'Great Vibes', cursive", color: "#000" }}
+                className="-mt-3 md:-mt-5 text-5xl md:text-6xl lg:text-7xl"
+                style={{ fontFamily: "'Great Vibes', cursive", color: "#000", lineHeight: "1.2" }}
               >
                 Ribeiro Consultoria
               </p>
