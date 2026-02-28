@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import InputMask from "react-input-mask";
 
@@ -19,6 +20,7 @@ interface FormData {
 const Simulator = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     nome: "",
@@ -30,16 +32,11 @@ const Simulator = () => {
     observacao: ""
   });
 
-  const canSubmit = () => {
-    return (
-      formData.nome.trim() !== "" &&
-      formData.idade.trim() !== "" &&
-      formData.telefone.replace(/\D/g, "").length >= 10 &&
-      formData.whatsapp.replace(/\D/g, "").length === 11 &&
-      formData.cidade.trim() !== "" &&
-      formData.bairro.trim() !== ""
-    );
-  };
+  const canAdvanceStep1 = () => formData.nome.trim() !== "" && formData.idade.trim() !== "";
+  const canAdvanceStep2 = () =>
+    formData.telefone.replace(/\D/g, "").length >= 10 &&
+    formData.whatsapp.replace(/\D/g, "").length === 11;
+  const canSubmit = () => formData.cidade.trim() !== "" && formData.bairro.trim() !== "";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -104,54 +101,101 @@ const Simulator = () => {
           </div>
 
           <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 md:p-10 space-y-6">
+            {/* Progress */}
             <div className="space-y-2">
-              <Label htmlFor="nome">Nome completo</Label>
-              <Input id="nome" value={formData.nome} onChange={(e) => update("nome", e.target.value)} placeholder="Seu nome completo" className="p-5" />
+              <div className="flex justify-between text-sm text-muted-foreground">
+                <span>Etapa {step} de 3</span>
+                <span>{Math.round((step / 3) * 100)}%</span>
+              </div>
+              <Progress value={(step / 3) * 100} className="h-2" />
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="idade">Sua idade</Label>
-              <Input id="idade" value={formData.idade} onChange={(e) => update("idade", e.target.value)} placeholder="Ex: 25" className="p-5" type="number" min="16" max="99" />
-            </div>
+            {/* Step 1 */}
+            {step === 1 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="nome">Nome completo</Label>
+                  <Input id="nome" value={formData.nome} onChange={(e) => update("nome", e.target.value)} placeholder="Seu nome completo" className="p-5" />
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="idade">Sua idade</Label>
+                  <Input id="idade" value={formData.idade} onChange={(e) => update("idade", e.target.value)} placeholder="Ex: 25" className="p-5" type="number" min="16" max="99" />
+                </div>
+              </div>
+            )}
 
-            <div className="space-y-2">
-              <Label htmlFor="telefone">Número que você recebe ligação</Label>
-              <InputMask mask="(99) 99999-9999" value={formData.telefone} onChange={(e) => update("telefone", e.target.value)}>
-                {/* @ts-ignore */}
-                {(inputProps: any) => <Input {...inputProps} id="telefone" placeholder="(00) 00000-0000" className="p-5" />}
-              </InputMask>
-            </div>
+            {/* Step 2 */}
+            {step === 2 && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label htmlFor="telefone">Número que você recebe ligação</Label>
+                  <InputMask mask="(99) 99999-9999" value={formData.telefone} onChange={(e) => update("telefone", e.target.value)}>
+                    {/* @ts-ignore */}
+                    {(inputProps: any) => <Input {...inputProps} id="telefone" placeholder="(00) 00000-0000" className="p-5" />}
+                  </InputMask>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="whatsapp">Número WhatsApp</Label>
+                  <InputMask mask="(99) 99999-9999" value={formData.whatsapp} onChange={(e) => update("whatsapp", e.target.value)}>
+                    {/* @ts-ignore */}
+                    {(inputProps: any) => <Input {...inputProps} id="whatsapp" placeholder="(00) 00000-0000" className="p-5" />}
+                  </InputMask>
+                </div>
+              </div>
+            )}
 
-            <div className="space-y-2">
-              <Label htmlFor="whatsapp">Número WhatsApp</Label>
-              <InputMask mask="(99) 99999-9999" value={formData.whatsapp} onChange={(e) => update("whatsapp", e.target.value)}>
-                {/* @ts-ignore */}
-                {(inputProps: any) => <Input {...inputProps} id="whatsapp" placeholder="(00) 00000-0000" className="p-5" />}
-              </InputMask>
-            </div>
+            {/* Step 3 */}
+            {step === 3 && (
+              <div className="space-y-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="cidade">Cidade</Label>
+                    <Input id="cidade" value={formData.cidade} onChange={(e) => update("cidade", e.target.value)} placeholder="Sua cidade" className="p-5" />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="bairro">Bairro que mora</Label>
+                    <Input id="bairro" value={formData.bairro} onChange={(e) => update("bairro", e.target.value)} placeholder="Seu bairro" className="p-5" />
+                  </div>
+                </div>
+                <div className="space-y-2">
+                  <Label htmlFor="observacao">Observação</Label>
+                  <Input id="observacao" value={formData.observacao} onChange={(e) => update("observacao", e.target.value)} placeholder="Observação (opcional)" className="p-5" maxLength={100} />
+                </div>
+              </div>
+            )}
 
-            <div className="space-y-2">
-              <Label htmlFor="cidade">Cidade</Label>
-              <Input id="cidade" value={formData.cidade} onChange={(e) => update("cidade", e.target.value)} placeholder="Sua cidade" className="p-5" />
-            </div>
+            {/* Navigation buttons */}
+            <div className="flex gap-3">
+              {step > 1 && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setStep(step - 1)}
+                  className="flex-1 font-bold text-lg py-7 rounded-lg"
+                >
+                  ← Voltar
+                </Button>
+              )}
 
-            <div className="space-y-2">
-              <Label htmlFor="bairro">Bairro que mora</Label>
-              <Input id="bairro" value={formData.bairro} onChange={(e) => update("bairro", e.target.value)} placeholder="Seu bairro" className="p-5" />
+              {step < 3 ? (
+                <Button
+                  type="button"
+                  disabled={step === 1 ? !canAdvanceStep1() : !canAdvanceStep2()}
+                  onClick={() => setStep(step + 1)}
+                  className="flex-1 bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-lg py-7 rounded-lg shadow-lg"
+                >
+                  Próximo →
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  disabled={!canSubmit() || isSubmitting}
+                  className="flex-1 bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-lg py-7 rounded-lg shadow-lg"
+                >
+                  {isSubmitting ? "Enviando..." : "Enviar Candidatura"}
+                </Button>
+              )}
             </div>
-
-            <div className="space-y-2">
-              <Label htmlFor="observacao">Observação</Label>
-              <Input id="observacao" value={formData.observacao} onChange={(e) => update("observacao", e.target.value)} placeholder="Observação (opcional)" className="p-5" maxLength={100} />
-            </div>
-
-            <Button
-              type="submit"
-              disabled={!canSubmit() || isSubmitting}
-              className="w-full bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-lg py-7 rounded-lg shadow-lg"
-            >
-              {isSubmitting ? "Enviando..." : "Enviar Candidatura"}
-            </Button>
           </form>
         </div>
       </div>
