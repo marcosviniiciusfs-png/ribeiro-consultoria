@@ -1,23 +1,27 @@
 
 
-## Plano: Adicionar seção "Sobre a Empresa" com ícones e animação futurista
+## Plano: Corrigir animação marquee para loop infinito contínuo
 
-### Nova seção acima de "Nossas Localizações"
+O problema é que a animação atual move um único container com 16 imagens, e quando chega ao fim do container há um "gap" visível e a animação reinicia abruptamente.
 
-Criar um novo componente `AboutSection.tsx` com 3 cards de destaque, cada um com ícone Lucide e animação de entrada futurista (fade-in + scale + slide com stagger delay):
+### Solução: Técnica de duplicação para loop infinito real
 
-1. **+9 Anos de Experiência** — Ícone `Clock` ou `Award` — "Consultoria financeira atuando há mais de 9 anos em Parauapebas, com representações em Parauapebas e Canaã dos Carajás"
-2. **Campeã Estadual em Vendas** — Ícone `Trophy` — "A campeã em vendas estadual"
-3. **Top 10 Nacional** — Ícone `TrendingUp` ou `Star` — "Entre as 10 melhores da administradora a nível nacional"
+**`src/components/Simulator.tsx`**:
+- Usar dois conjuntos idênticos de imagens lado a lado dentro de um wrapper
+- O primeiro conjunto se desloca exatamente o seu próprio comprimento (`translateX(-50%)`) e o segundo conjunto preenche o espaço, criando um ciclo contínuo sem gaps
+- Adicionar classe responsiva para velocidade mais rápida no mobile
 
-### Animação futurista
-- Adicionar keyframes customizados em `tailwind.config.ts`: `futuristic-in` combinando `translateY(40px) scale(0.9) opacity(0)` → `translateY(0) scale(1) opacity(1)` com `cubic-bezier` suave
-- Cada card entra com delay escalonado (0s, 0.2s, 0.4s)
-- Linha decorativa animada ou brilho sutil nos ícones
+**`src/index.css`**:
+- Manter o keyframe `marquee-scroll` de `translateX(0)` a `translateX(-50%)`
+- Adicionar media query para mobile com duração mais rápida (ex: 8s ao invés de 15s)
 
-### Alterações em arquivos
+**Estrutura do marquee corrigido**:
+```text
+[wrapper overflow-hidden]
+  [flex w-max animate] ← move -50% do total
+    [img img img img img img img img] ← conjunto A
+    [img img img img img img img img] ← conjunto B (duplicata exata)
+```
 
-1. **Criar `src/components/AboutSection.tsx`** — Componente com 3 cards em grid responsivo, ícones Lucide (Award, Trophy, TrendingUp), animação futurista escalonada
-2. **Editar `tailwind.config.ts`** — Adicionar keyframe `futuristic-in` e animação correspondente
-3. **Editar `src/pages/Index.tsx`** — Importar e inserir `<AboutSection />` antes de `<BenefitsSection />`
+Quando o conjunto A sai pela esquerda, o conjunto B já o substituiu perfeitamente, e o CSS reinicia sem descontinuidade visual.
 
