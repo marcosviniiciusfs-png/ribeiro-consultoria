@@ -1,58 +1,44 @@
-import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import heroBanner from "@/assets/hero-banner.png";
+import teamPhoto from "@/assets/team-photo.png";
 
 interface HeroSectionProps {
   onSimulateClick: () => void;
 }
 
 const HeroSection = ({ onSimulateClick }: HeroSectionProps) => {
-  const benefits = [
-    "100% Gratuito",
-    "Sem consulta ao SPC",
-    "Resultado no WhatsApp",
-    "Lojas em parceria"
-  ];
-
   return (
     <section id="inicio" className="pt-24 pb-20 bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in">
-            <div className="inline-block">
-              <p className="text-sm font-semibold text-primary uppercase tracking-wide mb-2">
-                + DE 1000 SIMULAÇÕES REALIZADAS
+          <div className="space-y-6 animate-fade-in flex flex-col items-center md:items-start">
+            <div className="space-y-2 text-center md:text-left">
+              <h1
+                className="text-4xl md:text-5xl lg:text-6xl font-bold uppercase tracking-tight leading-tight"
+                style={{ color: "#003399" }}
+              >
+                Faça parte do nosso time
+              </h1>
+              <p
+                className="text-4xl md:text-5xl lg:text-6xl"
+                style={{ fontFamily: "'Great Vibes', cursive", color: "#000" }}
+              >
+                Ribeiro Consultoria
               </p>
             </div>
-            
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight">
-              Simule agora o seu crédito ideal para conquistar o seu sonho
-            </h1>
 
-            <div className="space-y-3">
-              {benefits.map((benefit, index) => (
-                <div key={index} className="flex items-center gap-3">
-                  <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
-                    <Check className="w-4 h-4 text-primary-foreground" />
-                  </div>
-                  <span className="text-foreground font-medium">{benefit}</span>
-                </div>
-              ))}
-            </div>
-
-            <Button 
+            <Button
               onClick={onSimulateClick}
               size="lg"
               className="bg-primary hover:bg-primary-hover text-primary-foreground font-bold text-lg px-10 py-7 rounded-lg shadow-lg hover:shadow-xl transition-all"
             >
-              Simular crédito agora →
+              Candidate-se agora →
             </Button>
           </div>
 
           <div className="relative animate-scale-in">
-            <img 
-              src={heroBanner} 
-              alt="Imóveis e Veículos - Casa, Carro e Trator" 
+            <img
+              src={teamPhoto}
+              alt="Equipe Ribeiro Consultoria"
               className="w-full h-auto rounded-2xl shadow-2xl"
             />
           </div>
