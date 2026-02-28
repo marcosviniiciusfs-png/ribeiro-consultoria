@@ -6,6 +6,7 @@ import { Label } from "@/components/ui/label";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
 import InputMask from "react-input-mask";
+import marqueeLogo from "@/assets/marquee-logo.png";
 
 interface FormData {
   nome: string;
@@ -87,7 +88,17 @@ const Simulator = () => {
   };
 
   return (
-    <section id="candidatura" className="py-20 bg-gradient-to-b from-white to-blue-50">
+    <>
+      {/* Marquee bar */}
+      <div className="w-full bg-primary overflow-hidden py-3">
+        <div className="flex whitespace-nowrap" style={{ animation: "marquee-scroll 15s linear infinite" }}>
+          {Array.from({ length: 16 }).map((_, i) => (
+            <img key={i} src={marqueeLogo} alt="" className="h-8 mx-6 inline-block flex-shrink-0" />
+          ))}
+        </div>
+      </div>
+
+      <section id="candidatura" className="py-20 bg-gradient-to-b from-white to-blue-50">
       <div className="container mx-auto px-4">
         <div className="max-w-2xl mx-auto">
           <div className="text-center mb-8">
@@ -199,7 +210,8 @@ const Simulator = () => {
           </form>
         </div>
       </div>
-    </section>
+      </section>
+    </>
   );
 };
 
