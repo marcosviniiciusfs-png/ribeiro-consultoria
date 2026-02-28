@@ -1,13 +1,11 @@
 
 
-## Plano: Ajustar sobreposição do texto no Hero Section
-
-O usuário quer que o texto cursivo "Ribeiro Consultoria" sobreponha parcialmente o texto "FAÇA PARTE DO NOSSO TIME", como mostrado na imagem 2 de referência.
+## Plano: Ajustar texto do Hero em linha única
 
 ### Alteração em `src/components/HeroSection.tsx`
 
-- Remover o `space-y-2` do container dos textos
-- Adicionar margem negativa superior (`-mt-4` ou similar) no texto cursivo "Ribeiro Consultoria" para que ele sobreponha parcialmente o texto azul acima
-- Aumentar o tamanho da fonte cursiva para ficar mais proporcional ao título (similar à referência)
-- Ajustar line-height do título para permitir a sobreposição natural
+- Reduzir o tamanho da fonte do h1 "FAÇA PARTE DO NOSSO TIME" para caber em uma única linha (de `text-4xl md:text-5xl lg:text-6xl` para algo como `text-2xl md:text-3xl lg:text-4xl`)
+- Adicionar `whitespace-nowrap` ao h1 para forçar linha única
+- Ajustar o tamanho do texto cursivo proporcionalmente para que ambos tenham largura similar
+- Aumentar a margem negativa para a sobreposição ficar como na imagem 2 de referência
 
