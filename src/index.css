@@ -105,6 +105,16 @@ All colors MUST be HSL.
   100% { transform: translateX(-50%); }
 }
 
+.marquee-track {
+  animation: marquee-scroll 20s linear infinite;
+}
+
+@media (max-width: 768px) {
+  .marquee-track {
+    animation-duration: 8s;
+  }
+}
+
 @layer base {
   * {
     @apply border-border;
