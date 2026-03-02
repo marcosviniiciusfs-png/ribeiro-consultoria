@@ -1,4 +1,4 @@
-import { Phone, Instagram } from "lucide-react";
+import { Phone, Instagram, Facebook } from "lucide-react";
 import riberioLogo from "@/assets/ribeiro-logo-footer.png";
 
 const Footer = () => {
@@ -18,16 +18,16 @@ const Footer = () => {
             <h3 className="text-lg font-bold mb-4">Social</h3>
             <div className="flex gap-3">
               <a 
-                href="https://instagram.com" 
+                href="https://www.facebook.com/profile.php?id=61555828321594" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
-                aria-label="Instagram"
+                aria-label="Facebook"
               >
-                <Instagram className="w-5 h-5" />
+                <Facebook className="w-5 h-5" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href="https://www.instagram.com/ribeiro_consultoria_carajas/" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
