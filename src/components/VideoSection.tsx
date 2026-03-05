@@ -13,15 +13,15 @@ const VideoSection = () => {
           </h2>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <div className="rounded-2xl overflow-hidden shadow-lg border border-border">
+        <div className="max-w-2xl mx-auto">
+          <div className="rounded-2xl overflow-hidden shadow-lg border border-border bg-black">
             <video
               src={vagaVideo}
               controls
               autoPlay
               muted
               playsInline
-              className="w-full"
+              className="w-full md:max-h-[500px] object-contain"
             />
           </div>
         </div>
