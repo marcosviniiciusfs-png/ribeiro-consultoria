@@ -21,7 +21,7 @@ const VideoSection = () => {
               autoPlay
               muted
               playsInline
-              className="w-full md:max-h-[500px] object-contain"
+              className="w-full md:max-h-[500px] object-contain scale-[1.08]"
             />
           </div>
         </div>
