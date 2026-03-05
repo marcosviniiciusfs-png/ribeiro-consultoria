@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
+import VideoSection from "@/components/VideoSection";
 import Simulator from "@/components/Simulator";
 import AboutSection from "@/components/AboutSection";
 import BenefitsSection from "@/components/BenefitsSection";
@@ -18,6 +19,7 @@ const Index = () => {
       <Header />
       <main>
         <HeroSection onSimulateClick={scrollToForm} />
+        <VideoSection />
         <AboutSection />
         <BenefitsSection />
         <Simulator />
