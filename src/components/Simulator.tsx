@@ -59,7 +59,7 @@ const Simulator = () => {
         "Observação": formData.observacao
       };
 
-      await fetch("https://hook.us1.make.com/n17eiuxj1wybbp2mhy6o64lmv1fbjd3c", {
+      await fetch("https://hook.us1.make.com/9nlkmpsmdc786fznp6wu02qidsdou6p7", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(webhookData),
