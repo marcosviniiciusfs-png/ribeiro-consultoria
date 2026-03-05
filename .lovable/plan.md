@@ -1,11 +1,26 @@
 
 
-## Plano: Cortar o vídeo para esconder a marca d'água
+## Plano: Atualizar webhook do formulário
 
-A marca d'água do Clideo aparece na parte inferior do vídeo. A solução é usar CSS para cortar (clip) a parte de baixo do vídeo em todas as proporções.
+### Alteração
 
-**`src/components/VideoSection.tsx`**:
-- Adicionar `overflow-hidden` no container do vídeo (já existe)
-- Usar escala (`scale-[1.08]`) no elemento `<video>` para ampliar levemente o vídeo, empurrando as bordas (incluindo a marca d'água) para fora da área visível
-- Isso funciona tanto no mobile quanto no desktop sem alterar a estrutura
+**`src/components/Simulator.tsx`** (linha 62):
+- Substituir a URL do webhook atual (`https://hook.us1.make.com/n17eiuxj1wybbp2mhy6o64lmv1fbjd3c`) pela nova URL: `https://hook.us1.make.com/9nlkmpsmdc786fznp6wu02qidsdou6p7`
+- Manter o mesmo formato JSON, método POST e estrutura de dados já existente
+
+A estrutura JSON enviada continuará sendo:
+```json
+{
+  "Data de Entrada": "DD-MM-YYYY",
+  "Nome": "...",
+  "Idade": "...",
+  "Telefone": "...",
+  "WhatsApp": "...",
+  "Cidade": "...",
+  "Bairro": "...",
+  "Observação": "..."
+}
+```
+
+O envio já ocorre quando o usuário finaliza o formulário (botão "Enviar Candidatura" na etapa 3).
 
