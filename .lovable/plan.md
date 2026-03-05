@@ -1,11 +1,11 @@
 
 
-## Plano: Reduzir altura do vídeo no desktop
+## Plano: Cortar o vídeo para esconder a marca d'água
 
-O vídeo está em formato vertical (celular), então no desktop ocupa muita altura. A solução é limitar a altura máxima no desktop e centralizar o vídeo.
+A marca d'água do Clideo aparece na parte inferior do vídeo. A solução é usar CSS para cortar (clip) a parte de baixo do vídeo em todas as proporções.
 
 **`src/components/VideoSection.tsx`**:
-- Adicionar `md:max-h-[500px]` e `object-contain` ao elemento `<video>` para limitar a altura em telas maiores
-- Adicionar `bg-black` ao container do vídeo para preencher o espaço ao redor quando o vídeo não ocupa toda a largura
-- Reduzir o `max-w` do container para `max-w-2xl` no desktop
+- Adicionar `overflow-hidden` no container do vídeo (já existe)
+- Usar escala (`scale-[1.08]`) no elemento `<video>` para ampliar levemente o vídeo, empurrando as bordas (incluindo a marca d'água) para fora da área visível
+- Isso funciona tanto no mobile quanto no desktop sem alterar a estrutura
 
