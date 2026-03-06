@@ -1,26 +1,15 @@
 
+## Plano: Atualizar Meta Pixel para novo ID
 
-## Plano: Atualizar webhook do formulário
+O pixel antigo (1972802536840318) está configurado no `index.html`. Não há pixel específico no componente `Obrigado.tsx` - ele reutiliza o pixel global do index.html via roteamento React.
 
-### Alteração
+### Alterações necessárias:
 
-**`src/components/Simulator.tsx`** (linha 62):
-- Substituir a URL do webhook atual (`https://hook.us1.make.com/n17eiuxj1wybbp2mhy6o64lmv1fbjd3c`) pela nova URL: `https://hook.us1.make.com/9nlkmpsmdc786fznp6wu02qidsdou6p7`
-- Manter o mesmo formato JSON, método POST e estrutura de dados já existente
+**`index.html`** (linhas 20-43):
+1. Linha 30: Substituir `fbq('init', '1972802536840318');` por `fbq('init', '938073072505710');`
+2. Linha 42: Substituir o parâmetro `id=1972802536840318` por `id=938073072505710` na URL da tag `<noscript>`
 
-A estrutura JSON enviada continuará sendo:
-```json
-{
-  "Data de Entrada": "DD-MM-YYYY",
-  "Nome": "...",
-  "Idade": "...",
-  "Telefone": "...",
-  "WhatsApp": "...",
-  "Cidade": "...",
-  "Bairro": "...",
-  "Observação": "..."
-}
-```
-
-O envio já ocorre quando o usuário finaliza o formulário (botão "Enviar Candidatura" na etapa 3).
-
+Isso garante que:
+- A página inicial carrega o novo pixel
+- A página de obrigado (/obrigado) herda o mesmo pixel global
+- Ambas as páginas usam exclusivamente o novo pixel ID: 938073072505710
